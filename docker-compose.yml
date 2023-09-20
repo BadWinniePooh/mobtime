@@ -1,25 +1,28 @@
-version: '3'
+version: '3.8'
 
 services:
   redis:
     image: redis
-    container_name: cache
+    container_name: mobtime-cache
     command: bash -c "redis-server --appendonly yes"
     expose:
       - 6379
+    volumes:
+      - mobtime-redis:/data
 
   app:
     build: .
+#    image: mobtime-app
     container_name: mobtime-app
     environment:
       REDIS_HOST: redis
       APP_HOST: ${APP_HOST:-0.0.0.0}
-      APP_PORT: 1234
+      APP_PORT: 6380
       WORKERS: ${WORKERS:-2}
       TOKEN_KEY: ${TOKEN_KEY:-"console:aT88jG"}
     ports:
-      - 0.0.0.0:${SERVICE_PORT:-1234}:1234
+      - ${SERVICE_PORT:-6380}:6380
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:1234"]
+      test: ["CMD", "curl", "-f", "http://localhost:6380"]
     depends_on:
       - redis
