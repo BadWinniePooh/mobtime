@@ -2,6 +2,10 @@
 
 A websocket powered, collaborative mobbing timer, for desktop and mobile.
 
+## Deploying to a server
+
+The current version is available at [Docker Hub](https://hub.docker.com/r/badwinniepooh/mobtime-app). Please have a look at the documentation over there on how to run your own instance of a mob timer.
+
 ## Running Locally
 
 ### With Docker/Docker Compose
