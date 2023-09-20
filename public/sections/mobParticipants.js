@@ -9,7 +9,7 @@ import { mobber } from '/components/mobber.js';
 const getReorderableId = item => `mob-${item.id}`;
 
 export const mobParticipants = props => {
-  const mobOrder = (props.mobOrder || 'Navigator,Driver').split(',');
+  const mobOrder = (props.mobOrder || 'Navigator,Driver,Next').split(',');
 
   const length =
     props.mob.length > 0
